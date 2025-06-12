@@ -19,15 +19,6 @@ lazy val root = (project in file("core"))
   .settings(ExtraCommands.commands)
   .settings(ExtraCommands.commandAliases)
 
-//    nativeRoot := baseDirectory.value.toPath.resolveSibling("native").toFile,
-//lazy val root = project
-//  .enablePlugins(NoPublishPlugin)
-//  .in(file("."))
-////  .aggregate(core, vision, examples, docs)
-//  .settings(
-//    javaCppVersion := (ThisBuild / javaCppVersion).value,
-////    csrCacheDirectory := file("D:\\coursier"),
-//  )
 
 ThisBuild / tlBaseVersion := "0.0" // your current series x.y
 //ThisBuild / CoursierCache := file("D:\\coursier")
@@ -39,7 +30,7 @@ ThisBuild / developers := List(
   // your GitHub handle and name
   tlGitHubDev("mullerhai", "mullerhai")
 )
-ThisBuild / version := "0.1.2"
+ThisBuild / version := "0.1.3"
 
 ThisBuild / scalaVersion := "3.6.4"
 ThisBuild / tlSonatypeUseLegacyHost := false
@@ -63,43 +54,26 @@ releaseProcess := Seq[ReleaseStep](
   pushChanges,
 )
 
-
-//ThisBuild / version := "0.1.0-SNAPSHOT"
-
-
-ThisBuild / tlSitePublishBranch := Some("main")
+ThisBuild / tlSitePublishBranch := Some("master")
 
 ThisBuild / apiURL := Some(new URL("https://storch.dev/api/"))
 ThisBuild / tlSonatypeUseLegacyHost := false
 
 // publish website from this branch
-ThisBuild / tlSitePublishBranch := Some("main")
+ThisBuild / tlSitePublishBranch := Some("master")
 ThisBuild / homepage := Some(new URL("https://storch.dev/api/"))
 ThisBuild / scmInfo := Some( ScmInfo( url( "https://github.com/mullerhai/storch-polars" ), "scm:git:https://github.com/mullerhai/storch-polars.git" ) )
 // https://mvnrepository.com/artifact/org.projectlombok/lombok
-
+libraryDependencies += "com.fasterxml.jackson.dataformat" % "jackson-dataformat-xml" % "2.19.0"
 // https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310
 libraryDependencies += "com.fasterxml.jackson.datatype" % "jackson-datatype-jsr310" % "2.19.0"
 // https://mvnrepository.com/artifact/com.fasterxml.jackson.module/jackson-module-scala
 libraryDependencies += "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.19.0"
 // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
 libraryDependencies += "com.fasterxml.jackson.core" % "jackson-databind" % "2.19.0"
-// https://mvnrepository.com/artifact/org.xerial.snappy/snappy-java
-//libraryDependencies += "org.xerial.snappy" % "snappy-java" % "1.1.10.7"
-//// https://mvnrepository.com/artifact/org.lz4/lz4-java
-//libraryDependencies += "org.lz4" % "lz4-java" % "1.8.0"
-//// https://mvnrepository.com/artifact/com.ning/compress-lzf
-//libraryDependencies += "com.ning" % "compress-lzf" % "1.1.2"
-//// https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
-//libraryDependencies += "org.apache.commons" % "commons-lang3" % "3.17.0"
-//// https://mvnrepository.com/artifact/org.slf4j/slf4j-api
-//libraryDependencies += "org.slf4j" % "slf4j-api" % "2.1.0-alpha1"
-//// https://mvnrepository.com/artifact/commons-io/commons-io
-//libraryDependencies += "commons-io" % "commons-io" % "2.19.0"
-//// https://mvnrepository.com/artifact/com.google.jimfs/jimfs
-//libraryDependencies += "com.google.jimfs" % "jimfs" % "1.3.0" % Test
-// https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-xml
-libraryDependencies += "com.fasterxml.jackson.dataformat" % "jackson-dataformat-xml" % "2.19.0"
+libraryDependencies += "io.github.mullerhai" % "storch-pickle_3" % "0.1.0"
+libraryDependencies += "io.github.mullerhai" % "storch-numpy_3" % "0.1.0"
+libraryDependencies += "io.github.mullerhai" % "storch-safe-tensor_3" % "0.1.0"
 
 ThisBuild  / assemblyMergeStrategy := {
   case v if v.contains("module-info.class")   => MergeStrategy.discard
@@ -120,3 +94,32 @@ ThisBuild  / assemblyMergeStrategy := {
     val oldStrategy = (assembly / assemblyMergeStrategy).value
     oldStrategy(x)
 }
+
+// https://mvnrepository.com/artifact/org.xerial.snappy/snappy-java
+//libraryDependencies += "org.xerial.snappy" % "snappy-java" % "1.1.10.7"
+//// https://mvnrepository.com/artifact/org.lz4/lz4-java
+//libraryDependencies += "org.lz4" % "lz4-java" % "1.8.0"
+//// https://mvnrepository.com/artifact/com.ning/compress-lzf
+//libraryDependencies += "com.ning" % "compress-lzf" % "1.1.2"
+//// https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+//libraryDependencies += "org.apache.commons" % "commons-lang3" % "3.17.0"
+//// https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+//libraryDependencies += "org.slf4j" % "slf4j-api" % "2.1.0-alpha1"
+//// https://mvnrepository.com/artifact/commons-io/commons-io
+//libraryDependencies += "commons-io" % "commons-io" % "2.19.0"
+//// https://mvnrepository.com/artifact/com.google.jimfs/jimfs
+//libraryDependencies += "com.google.jimfs" % "jimfs" % "1.3.0" % Test
+// https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-xml
+
+
+
+
+//    nativeRoot := baseDirectory.value.toPath.resolveSibling("native").toFile,
+//lazy val root = project
+//  .enablePlugins(NoPublishPlugin)
+//  .in(file("."))
+////  .aggregate(core, vision, examples, docs)
+//  .settings(
+//    javaCppVersion := (ThisBuild / javaCppVersion).value,
+////    csrCacheDirectory := file("D:\\coursier"),
+//  )
