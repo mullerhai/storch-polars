@@ -13,7 +13,7 @@ object ProjectDependencies {
         "com.fasterxml.jackson.datatype" % "jackson-datatype-jsr310" % jacksonVersion,
         "io.github.mullerhai" % "storch-pickle_3" % "0.1.2",
         "io.github.mullerhai" % "storch-numpy_3" % "0.1.3",
-        "io.github.mullerhai" % "storch-safe-tensor_3" % "0.1.0",
+        "io.github.mullerhai" % "storch-safe-tensor_3" % "0.1.1",
         // https://mvnrepository.com/artifact/org.apache.avro/avro
          "org.apache.avro" % "avro" % "1.12.0",
         "org.apache.parquet" % "parquet-avro" % "1.15.2",
