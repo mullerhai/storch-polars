@@ -35,10 +35,8 @@ object ReadingFileDatasets {
     val df = Polars.scan
       .parquet(path)
       .collect()
-
     println("Showing parquet file as a DataFrame to stdout.")
     df.show()
-
     printf("Total rows: %s%n%n", df.count())
 
     /* For multiple Parquet file(s) */

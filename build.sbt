@@ -71,9 +71,9 @@ libraryDependencies += "com.fasterxml.jackson.datatype" % "jackson-datatype-jsr3
 libraryDependencies += "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.19.0"
 // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
 libraryDependencies += "com.fasterxml.jackson.core" % "jackson-databind" % "2.19.0"
-libraryDependencies += "io.github.mullerhai" % "storch-pickle_3" % "0.1.0"
-libraryDependencies += "io.github.mullerhai" % "storch-numpy_3" % "0.1.0"
-libraryDependencies += "io.github.mullerhai" % "storch-safe-tensor_3" % "0.1.0"
+//libraryDependencies += "io.github.mullerhai" % "storch-pickle_3" % "0.1.2"
+//libraryDependencies += "io.github.mullerhai" % "storch-numpy_3" % "0.1.3"
+//libraryDependencies += "io.github.mullerhai" % "storch-safe-tensor_3" % "0.1.0"
 
 ThisBuild  / assemblyMergeStrategy := {
   case v if v.contains("module-info.class")   => MergeStrategy.discard
